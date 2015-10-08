@@ -28,9 +28,10 @@ limitations under the License.
 ### Forked version
 
 This openssl is forked because we need it to be able to compiled with OpenSSL 
-0.9.8l 5 Nov 2009. If you have Openssl development package installed then you 
-should not have any problem in **go install** this package. You may use Linux 
-terminal command to find out where the openssl.pc is, as below:
+0.9.8l 5 Nov 2009. If you have Openssl development package (on Ubuntu machine 
+**sudo apt-get install libssl-dev**) installed then you should not have any 
+problem in **go install** this package. You may use Linux terminal command to 
+find out where the openssl.pc is, as below:
 ```
 $ locate openssl.pc
 $ /usr/lib/x86_64-linux-gnu/pkgconfig/openssl.pc
