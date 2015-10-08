@@ -28,4 +28,16 @@ limitations under the License.
 ### Forked version
 
 This openssl is forked because we need it to be able to compiled with OpenSSL 
-0.9.8l 5 Nov 2009.
+0.9.8l 5 Nov 2009. If you have Openssl development package installed then you 
+should not have any problem in **go install** this package. You may use Linux 
+terminal command to find out where the openssl.pc is, as below:
+```
+$ locate openssl.pc
+$ /usr/lib/x86_64-linux-gnu/pkgconfig/openssl.pc
+$ /cention/lib/pkgconfig/openssl.pc
+```
+Note the custom location of */cention/lib/pkgconfig/*, we can ask **go install** to 
+use this as its pkg-config path lookup, as below:
+```
+$ PKG_CONFIG_PATH=/cention/lib/pkgconfig go install github.com/cention-sany/openssl
+```
