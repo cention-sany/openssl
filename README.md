@@ -24,3 +24,8 @@ limitations under the License.
 3. Build (or install precompiled) openssl for mingw32-w64
 4. Set __PKG\_CONFIG\_PATH__ to the directory containing openssl.pc
    (i.e. c:\mingw64\mingw64\lib\pkgconfig)
+
+### Forked version
+
+This openssl is forked because we need it to be able to compiled with OpenSSL 
+0.9.8l 5 Nov 2009.
