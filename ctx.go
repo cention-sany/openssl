@@ -448,8 +448,9 @@ func (c *Ctx) SetOptions(options Options) Options {
 }
 
 func (c *Ctx) ClearOptions(options Options) Options {
-	return Options(C.SSL_CTX_clear_options_not_a_macro(
-		c.ctx, C.long(options)))
+	return options
+	// return Options(C.SSL_CTX_clear_options_not_a_macro(
+	// 	c.ctx, C.long(options)))
 }
 
 type Modes int

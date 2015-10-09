@@ -27,18 +27,18 @@ import "C"
 // recent version of os x, and build the package with the '-tags brew' flag
 
 const (
-	UnsupportedConstraintSyntax VerifyResult = C.X509_V_ERR_UNSUPPORTED_CONSTRAINT_SYNTAX
-	UnsupportedConstraintType   VerifyResult = C.X509_V_ERR_UNSUPPORTED_CONSTRAINT_TYPE
-	UnsupportedExtensionFeature VerifyResult = C.X509_V_ERR_UNSUPPORTED_EXTENSION_FEATURE
-	ExcludedViolation           VerifyResult = C.X509_V_ERR_EXCLUDED_VIOLATION
-	SubtreeMinmax               VerifyResult = C.X509_V_ERR_SUBTREE_MINMAX
-	UnsupportedNameSyntax       VerifyResult = C.X509_V_ERR_UNSUPPORTED_NAME_SYNTAX
-	DifferentCrlScope           VerifyResult = C.X509_V_ERR_DIFFERENT_CRL_SCOPE
-	PermittedViolation          VerifyResult = C.X509_V_ERR_PERMITTED_VIOLATION
-	CrlPathValidationError      VerifyResult = C.X509_V_ERR_CRL_PATH_VALIDATION_ERROR
+// UnsupportedConstraintSyntax VerifyResult = C.X509_V_ERR_UNSUPPORTED_CONSTRAINT_SYNTAX
+// UnsupportedConstraintType   VerifyResult = C.X509_V_ERR_UNSUPPORTED_CONSTRAINT_TYPE
+// UnsupportedExtensionFeature VerifyResult = C.X509_V_ERR_UNSUPPORTED_EXTENSION_FEATURE
+// ExcludedViolation           VerifyResult = C.X509_V_ERR_EXCLUDED_VIOLATION
+// SubtreeMinmax               VerifyResult = C.X509_V_ERR_SUBTREE_MINMAX
+// UnsupportedNameSyntax       VerifyResult = C.X509_V_ERR_UNSUPPORTED_NAME_SYNTAX
+// DifferentCrlScope           VerifyResult = C.X509_V_ERR_DIFFERENT_CRL_SCOPE
+// PermittedViolation          VerifyResult = C.X509_V_ERR_PERMITTED_VIOLATION
+// CrlPathValidationError      VerifyResult = C.X509_V_ERR_CRL_PATH_VALIDATION_ERROR
 )
 
 const (
-	NoTLSv1_1 Options = C.SSL_OP_NO_TLSv1_1
-	NoTLSv1_2 Options = C.SSL_OP_NO_TLSv1_2
+// NoTLSv1_1 Options = C.SSL_OP_NO_TLSv1_1
+// NoTLSv1_2 Options = C.SSL_OP_NO_TLSv1_2
 )
