@@ -42,7 +42,7 @@ You will find following pkgconfig file for Cention development environment.
 $ /cention/lib/pkgconfig/libssl.pc
 ```
 We can ask **go install** to use cention-openssl (modified pc file from 
-cention libssl.pc) as its pkg-config path lookup, as below:
+cention-openssl libssl.pc) as its pkg-config path lookup, as below:
 ```
 $ PKG_CONFIG_PATH=$GOPATH/github.com/cention-sany/openssl/pkgconfig \
 go install github.com/cention-sany/openssl
