@@ -35,10 +35,15 @@ find out where the openssl.pc is, as below:
 ```
 $ locate openssl.pc
 $ /usr/lib/x86_64-linux-gnu/pkgconfig/openssl.pc
-$ /cention/lib/pkgconfig/openssl.pc
 ```
-Note the custom location of */cention/lib/pkgconfig/*, we can ask **go install** to 
-use this as its pkg-config path lookup, as below:
+
+You will find following pkgconfig file for Cention development environment.
 ```
-$ PKG_CONFIG_PATH=/cention/lib/pkgconfig go install github.com/cention-sany/openssl
+$ /cention/lib/pkgconfig/libssl.pc
+```
+We can ask **go install** to use cention-openssl (modified pc file from 
+cention libssl.pc) as its pkg-config path lookup, as below:
+```
+$ PKG_CONFIG_PATH=$GOPATH/github.com/cention-sany/openssl/pkgconfig \
+go install github.com/cention-sany/openssl
 ```
