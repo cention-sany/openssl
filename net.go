@@ -17,6 +17,7 @@ package openssl
 import (
 	"errors"
 	"net"
+	"time"
 )
 
 type listener struct {
@@ -77,6 +78,10 @@ const (
 // This library is not nice enough to use the system certificate store by
 // default for you yet.
 func Dial(network, addr string, ctx *Ctx, flags DialFlags) (*Conn, error) {
+	return DialTimeout(time.Duration(0), network, addr, ctx, flags)
+}
+
+func DialTimeout(d time.Duration, network, addr string, ctx *Ctx, flags DialFlags) (*Conn, error) {
 	host, _, err := net.SplitHostPort(addr)
 	if err != nil {
 		return nil, err
@@ -89,7 +94,7 @@ func Dial(network, addr string, ctx *Ctx, flags DialFlags) (*Conn, error) {
 		}
 		// TODO: use operating system default certificate chain?
 	}
-	c, err := net.Dial(network, addr)
+	c, err := net.DialTimeout(network, addr, d)
 	if err != nil {
 		return nil, err
 	}
