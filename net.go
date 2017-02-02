@@ -81,7 +81,31 @@ func Dial(network, addr string, ctx *Ctx, flags DialFlags) (*Conn, error) {
 	return DialTimeout(time.Duration(0), network, addr, ctx, flags)
 }
 
-func DialTimeout(d time.Duration, network, addr string, ctx *Ctx, flags DialFlags) (*Conn, error) {
+func DialTimeout(d time.Duration, network, addr string, ctx *Ctx,
+	flags DialFlags) (*Conn, error) {
+	return DialSessionTimeout(d, network, addr, ctx, flags, nil)
+}
+
+// DialSession will connect to network/address and then wrap the corresponding
+// underlying connection with an OpenSSL client connection using context ctx.
+// If flags includes InsecureSkipHostVerification, the server certificate's
+// hostname will not be checked to match the hostname in addr. Otherwise, flags
+// should be 0.
+//
+// Dial probably won't work for you unless you set a verify location or add
+// some certs to the certificate store of the client context you're using.
+// This library is not nice enough to use the system certificate store by
+// default for you yet.
+//
+// If session is not nil it will be used to resume the tls state. The session
+// can be retrieved from the GetSession method on the Conn.
+func DialSession(network, addr string, ctx *Ctx, flags DialFlags,
+	session []byte) (*Conn, error) {
+	return DialSessionTimeout(time.Duration(0), network, addr, ctx, flags, nil)
+}
+
+func DialSessionTimeout(d time.Duration, network, addr string, ctx *Ctx,
+	flags DialFlags, session []byte) (*Conn, error) {
 	host, _, err := net.SplitHostPort(addr)
 	if err != nil {
 		return nil, err
@@ -102,6 +126,13 @@ func DialTimeout(d time.Duration, network, addr string, ctx *Ctx, flags DialFlag
 	if err != nil {
 		c.Close()
 		return nil, err
+	}
+	if session != nil {
+		err := conn.setSession(session)
+		if err != nil {
+			c.Close()
+			return nil, err
+		}
 	}
 	if flags&DisableSNI == 0 {
 		err = conn.SetTlsExtHostName(host)
