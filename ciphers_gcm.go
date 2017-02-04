@@ -146,12 +146,12 @@ func (ctx *authDecryptionCipherCtx) ExtraData(aad []byte) error {
 }
 
 func (ctx *authEncryptionCipherCtx) GetTag() ([]byte, error) {
+	return nil, nil
 	// return ctx.getCtrlBytes(C.EVP_CTRL_GCM_GET_TAG, GCM_TAG_MAXLEN,
 	// 	GCM_TAG_MAXLEN)
-	return nil, nil
 }
 
 func (ctx *authDecryptionCipherCtx) SetTag(tag []byte) error {
-	//return ctx.setCtrlBytes(C.EVP_CTRL_GCM_SET_TAG, len(tag), tag)
 	return nil
+	//return ctx.setCtrlBytes(C.EVP_CTRL_GCM_SET_TAG, len(tag), tag)
 }

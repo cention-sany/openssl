@@ -88,7 +88,7 @@ static long SSL_CTX_set_tlsext_servername_callback_not_a_macro(
 #endif
 
 static const SSL_METHOD *OUR_TLSv1_1_method() {
-#if defined(TLS1_1_VERSION) && defined(TLSv1_1_method) && !defined(OPENSSL_SYSNAME_MACOSX)
+#if defined(TLS1_1_VERSION) && !defined(OPENSSL_SYSNAME_MACOSX)
     return TLSv1_1_method();
 #else
     return NULL;
@@ -96,7 +96,7 @@ static const SSL_METHOD *OUR_TLSv1_1_method() {
 }
 
 static const SSL_METHOD *OUR_TLSv1_2_method() {
-#if defined(TLS1_2_VERSION) && defined(TLSv1_2_method) && !defined(OPENSSL_SYSNAME_MACOSX)
+#if defined(TLS1_2_VERSION) && !defined(OPENSSL_SYSNAME_MACOSX)
     return TLSv1_2_method();
 #else
     return NULL;
@@ -472,9 +472,9 @@ func (c *Ctx) SetOptions(options Options) Options {
 }
 
 func (c *Ctx) ClearOptions(options Options) Options {
+	return options
 	// return Options(C.SSL_CTX_clear_options_not_a_macro(
 	// 	c.ctx, C.long(options)))
-	return options
 }
 
 // GetOptions returns context options. See
