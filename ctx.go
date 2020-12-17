@@ -197,13 +197,9 @@ func NewCtxWithVersion(version SSLVersion) (*Ctx, error) {
 	return newCtx(method)
 }
 
-// NewCtx creates a context that supports any TLS version 1.0 and newer.
+// NewCtx creates a context that supports any version.
 func NewCtx() (*Ctx, error) {
-	c, err := NewCtxWithVersion(AnyVersion)
-	if err == nil {
-		c.SetOptions(NoSSLv2 | NoSSLv3)
-	}
-	return c, err
+	return NewCtxWithVersion(AnyVersion)
 }
 
 // NewCtxFromFiles calls NewCtx, loads the provided files, and configures the
